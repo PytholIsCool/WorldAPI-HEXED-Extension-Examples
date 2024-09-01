@@ -1,8 +1,8 @@
 ﻿using HexedTools.HookUtils;
 using System.Collections;
 using UnityEngine;
-using WCv2.ButtonAPI.QM.Carousel;
-using WCv2.ButtonAPI.QM.Carousel.Items;
+using WorldAPI.ButtonAPI.QM.Carousel;
+using WorldAPI.ButtonAPI.QM.Carousel.Items;
 using WorldAPI.ButtonAPI;
 using WorldAPI.ButtonAPI.Buttons;
 using WorldAPI.ButtonAPI.Groups;
@@ -53,6 +53,7 @@ namespace WorldAPIExtentionExample
 
             //New additions to the API
             ExampleQMCGroup = new QMCGroup(ExamplePage, "Example Carousel Button Group");
+            new QMCTitle(ExampleQMCGroup, "This is a title!", true);
             new QMCToggle(ExampleQMCGroup, "Example Carousel Toggle", (val) =>
             {
                 if (val)
@@ -81,6 +82,15 @@ namespace WorldAPIExtentionExample
             {
                 Logs.Log("Setting3 has been applied!");
             });
+            var exampleFunctionButtons = new QMCFuncButton(ExampleQMCGroup, "This is a button!", "This is a tooltip!", () =>
+            {
+                Logs.Log("Example listener");
+            });
+            exampleFunctionButtons.AddButton("Also a button!", "Also a tooltip!", () =>
+            {
+                Logs.Log("Example listener");
+            });
+            new QMCTitle(ExampleQMCGroup, "Still a title!", true);
         }
     }
 }
