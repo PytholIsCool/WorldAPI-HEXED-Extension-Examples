@@ -1,6 +1,5 @@
 ﻿using CoreRuntime.Interfaces;
 using CoreRuntime.Manager;
-using HexedBase.Patches;
 using System.Collections;
 using WorldAPIExtentionExample;
 
@@ -16,9 +15,6 @@ namespace HexedBase
             
             MonoManager.PatchUpdate(typeof(VRCApplication).GetMethod(nameof(VRCApplication.Update))); 
             MonoManager.PatchOnApplicationQuit(typeof(VRCApplicationSetup).GetMethod(nameof(VRCApplicationSetup.OnApplicationQuit))); 
-
-            // Apply our custom Hooked functions
-            UnityEngineHWIDPatch.ApplyPatch();
 
             //After the Hexed Internal Template, do your stuff
             CoroutineManager.RunCoroutine(Example.WaitForQM()); //Since it's an IEnumerator, we use the coroutine manager
