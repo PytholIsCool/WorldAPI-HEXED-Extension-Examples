@@ -54,7 +54,7 @@ namespace WorldAPIExtentionExample
             //New additions to the API
             ExampleQMCGroup = new QMCGroup(ExamplePage, "Example Carousel Button Group");
             new QMCTitle(ExampleQMCGroup, "This is a title!", true);
-            new QMCToggle(ExampleQMCGroup, "Example Carousel Toggle", "Example Tooltip", (val) =>
+            new QMCToggle(ExampleQMCGroup, "Example Carousel Toggle", (val) =>
             {
                 if (val)
                 {
@@ -64,7 +64,7 @@ namespace WorldAPIExtentionExample
                 {
                     Logs.Log("Example Carousel Toggle Value Set To: " + val.ToString());
                 }
-            }, true);
+            }, "Example Tooltip", true);
             var exampleSlider = new QMCSlider(ExampleQMCGroup, "Example Carousel Slider", "Example Tooltip", (val, slider) =>
             { 
                 Logs.Log("Example Carousel Toggle Value Set To: " + val.ToString());
@@ -97,7 +97,7 @@ namespace WorldAPIExtentionExample
             }).AddButton("test2", "testTip2", () =>
             {
                 Logs.Log("Example listener");
-            }).AddToggle("test3", "testTip3", (val) =>
+            }).AddToggle("test3", (val) =>
             {
                 if (val)
                 {
@@ -107,8 +107,8 @@ namespace WorldAPIExtentionExample
                 {
                     Logs.Log("Example Carousel Function Toggle Value Set To: " + val.ToString());
                 }
-            });
-            ExampleQMCGroup.AddQMCFuncToggle("testFuncToggle", "FuncTip", (val) =>
+            }, "testTip3");
+            ExampleQMCGroup.AddQMCFuncToggle("testFuncToggle", (val) =>
             {
                 if (val)
                 {
@@ -118,10 +118,10 @@ namespace WorldAPIExtentionExample
                 {
                     Logs.Log("Example Carousel Function Toggle Value Set To: " + val.ToString());
                 }
-            }).AddButton("test1", "test1", () =>
+            }, "FuncTip").AddButton("test1", () =>
             {
                 Logs.Log("Example listener");
-            }).AddToggle("test2", "test2", (val) =>
+            }, "test1").AddToggle("test2", (val) =>
             {
                 if (val)
                 {
@@ -131,7 +131,7 @@ namespace WorldAPIExtentionExample
                 {
                     Logs.Log("Example Carousel Function Toggle Value Set To: " + val.ToString());
                 }
-            });
+            }, "test2");
         }
     }
 }
